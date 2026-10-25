@@ -16,8 +16,8 @@ your own disc.
 - **Switch (Atmosphère, homebrew NRO):** since 0.8.0 the game draws with Renut's renderer on deko3d, the Switch's own
   graphics API (reNut by masterspike52, used with the author's permission, as banjo-nx and sa2-nx carry it), at 1280x720 in
   handheld and docked mode. Fights hold 60 fps with the CPU at 1785 MHz and the GPU at 768 MHz (Training and the
-  attract-mode fights, measured on a console in October 2026). The menus show Switch buttons (`usf4_button_icons` in
-  `usf4.toml`: `"switch"` or `"xbox"`). Video clip recording is turned off.
+  attract-mode fights, measured on a console in October 2026). The menus and the controller settings screen show Switch buttons
+  (`usf4_button_icons` in `usf4.toml`: `"switch"` or `"xbox"`). Video clip recording is turned off.
 
 Version history, measurements and every finding: [docs/usf4-notes.md](docs/usf4-notes.md).
 How the Switch renderer reached 60 fps on deko3d, for other ports: [docs/deko3d-renderer-usf4.md](docs/deko3d-renderer-usf4.md).
@@ -39,7 +39,7 @@ settings) at its first start.
 **Updating:** open the installer page again and press **Create usf4-nx-update.zip**: it only holds the new NRO and the
 shaders. Extract it over your folder; your settings and game files stay. From 0.7.x, `sa2_shaders.mesp` and
 `sa2_shaders.mesp.idx` are no longer used and can be deleted. If your `usf4.toml` sets the render height to 540, 0.8.0
-draws at 720 anyway (its renderer has no 540p).
+draws at 720 anyway (its renderer has no 540p). From 0.8.0 to 0.8.1 only `usf4.nro` changes.
 
 **The first time you play,** new places can stop for a moment while their shaders are compiled (the first fight's
 loading screen can take several seconds longer); they are kept on the SD card (`deko3d_shaders.bin`) for the next

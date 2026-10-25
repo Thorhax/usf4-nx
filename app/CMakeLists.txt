@@ -69,6 +69,8 @@ set(USF4_SOURCES
     src/usf4_job_wait.cpp
     # Switch button icons in place of the Xbox ones, for both renderers (usf4_button_icons).
     src/usf4_button_icons.cpp
+    # ...and Switch button names on the controller settings screen (the game's string tables, at inflate).
+    src/usf4_button_names.cpp
     # Late input for the native renderer (usf4_late_input; Renut has its own).
     src/usf4_late_input.cpp
     src/usf4_native_copy.cpp
@@ -268,6 +270,6 @@ if(REXGLUE_PLATFORM_SWITCH)
     rexglue_switch_add_nro(usf4
         NAME "Ultra Street Fighter IV"
         AUTHOR "Thorhax"
-        VERSION "0.8.0"
+        VERSION "0.8.1"
         ICON "${USF4_NRO_ICON}")
 endif()

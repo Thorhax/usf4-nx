@@ -959,3 +959,19 @@ Also in 0.8.0:
 
 Updating from 0.7.x: `sa2_shaders.mesp`, `sa2_shaders.mesp.idx` and `cache/sa2_native_pipelines.bin` are no longer used
 and can be deleted; `usf4.toml`'s 540 render height draws at 720.
+
+## 0.8.1: Switch button names on the controller settings screen (2026-10-25)
+
+- **Button names** (`src/usf4_button_names.cpp`, with `usf4_button_icons = "switch"`): the controller settings screen
+  listed actions with Xbox button names (X, Y, A, B, LB, LT, RB, RT), reported by a player. They are text in the game's
+  "#M4S" string tables (ENG, FRA, GER, ITA, JPN, KOR, SPA; EMZ streams of `archive/ui/ui.eaf` and `dl2/ae2.eaf`), not
+  textures, so 0.8.0's icons did not reach them. A hook on the game's zlib inflate (`sub_82776738`, FNV-checked)
+  rewrites the eight names as a table is inflated: by position (`input_xbox_layout`, the default) Y X B A, by letter X
+  Y A B; L ZL R ZR. Each new name fits in the old one's units, so no table offset moves.
+- **The game checks each EMZ stream's CRC-32:** the first build changed only the names and the whole table was refused
+  (every text of the screen showed its id, `ID_OPT_1108`...). The two units the shorter names free get values that keep
+  the CRC-32 as it was (solved on the PC per layout, checked on the seven tables). Console: Controls shows
+  Y X R L B A ZR ZL for the default layout, and pressing the Switch's B assigns the row named B.
+- Installer page: the shader step shows its progress (it takes about a minute on a fast PC, several on a slow one, and
+  had looked stuck), and the page unpacks the game's archives with fflate instead of the browser's
+  `DecompressionStream`. The shaders are unchanged: updating from 0.8.0 only replaces `usf4.nro`.
